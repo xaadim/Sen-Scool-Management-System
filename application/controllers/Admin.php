@@ -145,6 +145,7 @@ class Admin extends CI_Controller
         if ($this->session->userdata('admin_login') != 1)
             redirect('login', 'refresh');
         if ($param1 == 'create') {
+            $data['matricule']       = $this->input->post('matricule');
             $data['name']       = $this->input->post('name');
             $data['birthday']   = $this->input->post('birthday');
             $data['place_of_birth']   = $this->input->post('place_of_birth');
@@ -168,6 +169,7 @@ class Admin extends CI_Controller
             redirect(base_url() . 'index.php?admin/student_add/' . $data['class_id'], 'refresh');
         }
         if ($param2 == 'do_update') {
+            $data['matricule']        = $this->input->post('matricule');
             $data['name']        = $this->input->post('name');
             $data['birthday']    = $this->input->post('birthday');
             $data['place_of_birth']   = $this->input->post('place_of_birth');
