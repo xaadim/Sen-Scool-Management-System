@@ -22,6 +22,24 @@ foreach ( $edit_data as $row):
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="field-2" class="col-sm-3 control-label">Cycle</label>                        
+                    <div class="col-sm-5">
+                        <select name="cycle_id" class="form-control" help="fed">
+                          <option value=""><?php echo get_phrase('select');?></option>
+                          <?php 
+                            $cycle = $this->db->get('cycle')->result_array();
+                            foreach($cycle as $row):
+                                ?>
+                                <option value="<?php echo $row['cycle_id'];?>">
+                                    <?php echo $row['name'];?>
+                                </option>
+                            <?php
+                            endforeach;
+                          ?>
+                      </select>
+                    </div> 
+                </div>
+                <div class="form-group">
                     <label class="col-sm-3 control-label"><?php echo get_phrase('grade_point');?></label>
                     <div class="col-sm-5 controls">
                         <input type="text" class="form-control" name="grade_point" value="<?php echo $row['grade_point'];?>"/>

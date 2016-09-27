@@ -150,29 +150,13 @@ Emplois du temps des classes
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo get_phrase('starting_time');?></label>
                                 <div class="col-sm-5">
-                                    <select name="time_start" class="form-control" style="width:100%;">
-                                        <?php for($i = 0; $i <= 12 ; $i++):?>
-                                            <option value="<?php echo $i;?>"><?php echo $i;?></option>
-                                        <?php endfor;?>
-                                    </select>
-                                    <select name="starting_ampm" class="form-control" style="width:100%">
-                                        <option value="1">Avant midi</option>
-                                        <option value="2">Après midi</option>
-                                    </select>
+                                    <input type="time" name="time_start" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo get_phrase('ending_time');?></label>
                                 <div class="col-sm-5">
-                                    <select name="time_end" class="form-control" style="width:100%;">
-                                        <?php for($i = 0; $i <= 12 ; $i++):?>
-                                            <option value="<?php echo $i;?>"><?php echo $i;?></option>
-                                        <?php endfor;?>
-                                    </select>
-                                    <select name="ending_ampm" class="form-control" style="width:100%">
-                                        <option value="1">Avant midi</option>
-                                        <option value="2">Après midi</option>
-                                    </select>
+                                    <input type="time" name="time_end" class="form-control">
                                 </div>
                             </div>
                         <div class="form-group">

@@ -145,6 +145,7 @@ class Admin extends CI_Controller
         if ($this->session->userdata('admin_login') != 1)
             redirect('login', 'refresh');
         if ($param1 == 'create') {
+            $data['matricule']       = $this->input->post('matricule');
             $data['name']       = $this->input->post('name');
             $data['birthday']   = $this->input->post('birthday');
             $data['place_of_birth']   = $this->input->post('place_of_birth');
@@ -168,6 +169,7 @@ class Admin extends CI_Controller
             redirect(base_url() . 'index.php?admin/student_add/' . $data['class_id'], 'refresh');
         }
         if ($param2 == 'do_update') {
+            $data['matricule']        = $this->input->post('matricule');
             $data['name']        = $this->input->post('name');
             $data['birthday']    = $this->input->post('birthday');
             $data['place_of_birth']   = $this->input->post('place_of_birth');
@@ -568,6 +570,7 @@ class Admin extends CI_Controller
             redirect(base_url(), 'refresh');
         if ($param1 == 'create') {
             $data['name']        = $this->input->post('name');
+            $data['cycle_id']        = $this->input->post('cycle_id');
             $data['grade_point'] = $this->input->post('grade_point');
             $data['mark_from']   = $this->input->post('mark_from');
             $data['mark_upto']   = $this->input->post('mark_upto');
@@ -578,6 +581,7 @@ class Admin extends CI_Controller
         }
         if ($param1 == 'do_update') {
             $data['name']        = $this->input->post('name');
+            $data['cycle_id']        = $this->input->post('cycle_id');
             $data['grade_point'] = $this->input->post('grade_point');
             $data['mark_from']   = $this->input->post('mark_from');
             $data['mark_upto']   = $this->input->post('mark_upto');
@@ -612,8 +616,8 @@ class Admin extends CI_Controller
         if ($param1 == 'create') {
             $data['class_id']   = $this->input->post('class_id');
             $data['subject_id'] = $this->input->post('subject_id');
-            $data['time_start'] = $this->input->post('time_start') + (12 * ($this->input->post('starting_ampm') - 1));
-            $data['time_end']   = $this->input->post('time_end') + (12 * ($this->input->post('ending_ampm') - 1));
+            $data['time_start'] = $this->input->post('time_start');
+            $data['time_end']   = $this->input->post('time_end');
             $data['day']        = $this->input->post('day');
             $this->db->insert('class_routine', $data);
             $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
@@ -622,8 +626,8 @@ class Admin extends CI_Controller
         if ($param1 == 'do_update') {
             $data['class_id']   = $this->input->post('class_id');
             $data['subject_id'] = $this->input->post('subject_id');
-            $data['time_start'] = $this->input->post('time_start') + (12 * ($this->input->post('starting_ampm') - 1));
-            $data['time_end']   = $this->input->post('time_end') + (12 * ($this->input->post('ending_ampm') - 1));
+            $data['time_start'] = $this->input->post('time_start');
+            $data['time_end']   = $this->input->post('time_end');
             $data['day']        = $this->input->post('day');
             
             $this->db->where('class_routine_id', $param2);

@@ -15,7 +15,14 @@ NB: Assurer vous d'avoir bien ajouter les parents à l'avance depuis la page
 			<div class="panel-body">
 				
                 <?php echo form_open(base_url() . 'index.php?admin/student/create/' , array('class' => 'form-horizontal form-groups-bordered validate', 'enctype' => 'multipart/form-data'));?>
-	
+					<div class="form-group">
+						<label for="field-1" class="col-sm-3 control-label">Matricule de l'élève</label>
+                        
+						<div class="col-sm-5">
+							<input type="text" class="form-control" name="matricule" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>" value="" autofocus>
+						</div>
+					</div>
+
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label">Nom de l'élève</label>
                         
