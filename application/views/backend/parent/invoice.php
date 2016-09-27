@@ -29,6 +29,7 @@ N'hésitez pas à nous signaler des erreurs en écrivrant à l'administrateur un
                 <table  class="table table-bordered datatable" id="table_export">
                 	<thead>
                 		<tr>
+                            <th><div>Matricule</div></th>
                     		<th><div><?php echo get_phrase('student');?></div></th>
                     		<th><div><?php echo get_phrase('title');?></div></th>
                     		<th><div><?php echo get_phrase('description');?></div></th>
@@ -46,6 +47,7 @@ N'hésitez pas à nous signaler des erreurs en écrivrant à l'administrateur un
                             foreach($invoices as $row2):
                         ?>
                         <tr>
+                            <td><?php echo $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->matricule; ?></td>
 							<td><?php echo $this->crud_model->get_type_name_by_id('student',$row2['student_id']);?></td>
 							<td><?php echo $row2['title'];?></td>
 							<td><?php echo $row2['description'];?></td>

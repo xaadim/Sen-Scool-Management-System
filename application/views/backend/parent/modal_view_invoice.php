@@ -46,6 +46,7 @@ foreach ($edit_data as $row):
                 
                 <td align="left" valign="top">
                     <b>Nom: <?php echo $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->name; ?></b><br>
+                    <b>Matricule: <?php echo $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->matricule; ?></b><br>
                     <?php 
                         $class_id = $this->db->get_where('student' , array('student_id' => $row['student_id']))->row()->class_id;
                         echo '<b>'.'Classe' . ': ' . $this->db->get_where('class', array('class_id' => $class_id))->row()->name;

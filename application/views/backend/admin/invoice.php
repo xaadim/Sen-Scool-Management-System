@@ -28,6 +28,7 @@ reçu de non paiement qui sera envoyé électroniquement à l'élève et à ses 
                 <table  class="table table-bordered datatable" id="table_export">
                 	<thead>
                 		<tr>
+                            <th><div>Matricule</div></th>
                     		<th><div><?php echo get_phrase('student');?></div></th>
                             <th><div><?php echo get_phrase('title');?></div></th>
                     		<th><div><?php echo get_phrase('description');?></div></th>
@@ -42,7 +43,8 @@ reçu de non paiement qui sera envoyé électroniquement à l'élève et à ses 
                     <tbody>
                     	<?php foreach($invoices as $row):?>
                         <tr>
-							<td><?php echo $this->crud_model->get_type_name_by_id('student',$row['student_id']);?></td>
+							<td><?php echo $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->matricule; ?></td>
+                            <td><?php echo $this->crud_model->get_type_name_by_id('student',$row['student_id']);?></td>
                             <td><?php echo $row['title'];?></td>
 							<td><?php echo $row['description'];?></td>
                             <td><?php echo number_format($row['amount'], 0, '.', ' ').' FCFA';?></td>
