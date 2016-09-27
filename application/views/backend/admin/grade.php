@@ -25,6 +25,7 @@ Vous pouvez ajouter, modifier ou supprimer des appréciations.
                 	<thead>
                 		<tr>
                     		<th><div>#</div></th>
+                            <th><div>Cycle</div></th>
                     		<th><div><?php echo get_phrase('grade_name');?></div></th>
                     		<th><div><?php echo get_phrase('grade_point');?></div></th>
                     		<th><div><?php echo get_phrase('mark_from');?></div></th>
@@ -37,7 +38,10 @@ Vous pouvez ajouter, modifier ou supprimer des appréciations.
                     	<?php $count = 1;foreach($grades as $row):?>
                         <tr>
                             <td><?php echo $count++;?></td>
-							<td><?php echo $row['name'];?></td>
+                            <?php if($row['cycle_id'] != ''):?>
+                            <td><b><?php echo $this->db->get_where('cycle' , array('cycle_id' => $row['cycle_id']))->row()->name;?></b></td>                        
+                            <?php endif;?>
+                            <td><?php echo $row['name'];?></td>
 							<td><?php echo $row['grade_point'];?></td>
 							<td><?php echo $row['mark_from'];?></td>
 							<td><?php echo $row['mark_upto'];?></td>
@@ -85,6 +89,24 @@ Vous pouvez ajouter, modifier ou supprimer des appréciations.
                                 <div class="col-sm-5 controls">
                                     <input type="text" class="form-control" name="name"/>
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="field-2" class="col-sm-3 control-label">Cycle</label>                        
+                                <div class="col-sm-5">
+                                    <select name="cycle_id" class="form-control" help="fed">
+                                      <option value=""><?php echo get_phrase('select');?></option>
+                                      <?php 
+                                        $cycle = $this->db->get('cycle')->result_array();
+                                        foreach($cycle as $row):
+                                            ?>
+                                            <option value="<?php echo $row['cycle_id'];?>">
+                                                <?php echo $row['name'];?>
+                                            </option>
+                                        <?php
+                                        endforeach;
+                                      ?>
+                                  </select>
+                                </div> 
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo get_phrase('grade_point');?></label>
