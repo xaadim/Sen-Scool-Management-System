@@ -614,8 +614,8 @@ class Admin extends CI_Controller
         if ($param1 == 'create') {
             $data['class_id']   = $this->input->post('class_id');
             $data['subject_id'] = $this->input->post('subject_id');
-            $data['time_start'] = $this->input->post('time_start') + (12 * ($this->input->post('starting_ampm') - 1));
-            $data['time_end']   = $this->input->post('time_end') + (12 * ($this->input->post('ending_ampm') - 1));
+            $data['time_start'] = $this->input->post('time_start');
+            $data['time_end']   = $this->input->post('time_end');
             $data['day']        = $this->input->post('day');
             $this->db->insert('class_routine', $data);
             $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
@@ -624,8 +624,8 @@ class Admin extends CI_Controller
         if ($param1 == 'do_update') {
             $data['class_id']   = $this->input->post('class_id');
             $data['subject_id'] = $this->input->post('subject_id');
-            $data['time_start'] = $this->input->post('time_start') + (12 * ($this->input->post('starting_ampm') - 1));
-            $data['time_end']   = $this->input->post('time_end') + (12 * ($this->input->post('ending_ampm') - 1));
+            $data['time_start'] = $this->input->post('time_start');
+            $data['time_end']   = $this->input->post('time_end');
             $data['day']        = $this->input->post('day');
             
             $this->db->where('class_routine_id', $param2);
