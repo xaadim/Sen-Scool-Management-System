@@ -40,8 +40,8 @@ foreach($student_info as $row):?>
 
                     <?php if($row['student_id'] != ''):?>
                     <tr>
-                        <td>Identifiant</td>
-                        <td><b><?php echo $row['student_id'];?></b></td>
+                        <td>Matricule</td>
+                        <td><?php echo $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->matricule; ?></td>
                     </tr>
                     <?php endif;?>
                 
