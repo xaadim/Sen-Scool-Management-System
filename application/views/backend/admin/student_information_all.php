@@ -38,7 +38,7 @@
                 <table class="table table-bordered datatable" id="table_export">
                     <thead>
                         <tr>
-                            <th width="80"><div>#</div></th>
+                            <th><div>Matricule</div></th>
                             <th width="80"><div><?php echo get_phrase('photo');?></div></th>
                             <th><div><?php echo get_phrase('name');?></div></th>
                             <th class="span3"><div><?php echo get_phrase('address');?></div></th>
@@ -51,7 +51,7 @@
                                 $students   =   $this->db->get('student' )->result_array();
                                 foreach($students as $row):?>
                         <tr>
-                            <td><?php echo $count++;?></td>
+                            <td><?php echo $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->matricule; ?></td>
                             <td><img src="<?php echo $this->crud_model->get_image_url('student',$row['student_id']);?>" class="img-circle" width="30" /></td>
                             <td><?php echo $row['name'];?></td>
                             <td><?php echo $row['address'];?></td>
@@ -109,7 +109,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th width="80"><div>Identifiant</div></th>
+                            <th width="80"><div>Matricule</div></th>
                             <th width="80"><div><?php echo get_phrase('photo');?></div></th>
                             <th><div><?php echo get_phrase('name');?></div></th>
                             <th class="span3"><div><?php echo get_phrase('address');?></div></th>
@@ -124,7 +124,7 @@
                                 ))->result_array();
                                 foreach($students as $row):?>
                         <tr>
-                            <td><?php echo $row['student_id'];?></td>
+                            <td><?php echo $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->matricule; ?></td>
                             <td><img src="<?php echo $this->crud_model->get_image_url('student',$row['student_id']);?>" class="img-circle" width="30" /></td>
                             <td><?php echo $row['name'];?></td>
                             <td><?php echo $row['address'];?></td>
