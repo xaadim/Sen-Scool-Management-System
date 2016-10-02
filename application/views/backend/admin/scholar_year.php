@@ -40,8 +40,8 @@ Vous pouvez ajouter, modifier ou supprimer les années
                         <tr>
                             <td><?php echo $count++;?></td>
                             <td><?php echo $row['name'];?></td>
-                            <td><?php echo $row['start'];?></td>
-                            <td><?php echo $row['end'];?></td>
+                            <td><b><?php echo $this->db->get_where('month' , array('id_month' => $row['start']))->row()->name;?></b></td>
+                            <td><b><?php echo $this->db->get_where('month' , array('id_month' => $row['end']))->row()->name;?></b></td>
                             <td>
                                 <?php if ($row['active'] == 1):?>
                                     <span align="center">
@@ -99,47 +99,47 @@ Vous pouvez ajouter, modifier ou supprimer les années
                                 </div>
                             </div>                
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Début de l'année</label>
+                                <label class="col-sm-3 control-label">Fin de l'année</label>
                                 <div class="col-sm-5">
-                                    <select name="start" class="form-control" style="width:100%;">
-                                        <option value="Janvier">Janvier</option>
-                                        <option value="Février">Février</option>
-                                        <option value="Mars">Mars</option>
-                                        <option value="Avril">Avril</option>
-                                        <option value="Mai">Mai</option>
-                                        <option value="Juin">Juin</option>
-                                        <option value="Juillet">Juillet</option>
-                                        <option value="Août">Août</option>
-                                        <option value="Septembre">Septembre</option>
-                                        <option value="Octobre">Octobre</option>
-                                        <option value="Novembre">Novembre</option>
-                                        <option value="Décembre">Décembre</option>
+                                    <select name="start" class="form-control">
+                                        <option value=""></option>
+                                        <?php 
+                                        $month = $this->db->get('month')->result_array();
+                                        foreach($month as $row1):
+                                        ?>
+                                            <option value="<?php echo $row1['id_month'];?>"
+                                                <?php if($row['start'] == $row1['name'])echo 'selected';?>>
+                                                    <?php echo $row1['name'];?>
+                                            </option>
+                                        <?php
+                                        endforeach;
+                                        ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Fin de l'année</label>
                                 <div class="col-sm-5">
-                                    <select name="end" class="form-control" style="width:100%;">
-                                        <option value="Janvier">Janvier</option>
-                                        <option value="Février">Février</option>
-                                        <option value="Mars">Mars</option>
-                                        <option value="Avril">Avril</option>
-                                        <option value="Mai">Mai</option>
-                                        <option value="Juin">Juin</option>
-                                        <option value="Juillet">Juillet</option>
-                                        <option value="Août">Août</option>
-                                        <option value="Septembre">Septembre</option>
-                                        <option value="Octobre">Octobre</option>
-                                        <option value="Novembre">Novembre</option>
-                                        <option value="Décembre">Décembre</option>
+                                    <select name="end" class="form-control">
+                                        <option value=""></option>
+                                        <?php 
+                                        $month = $this->db->get('month')->result_array();
+                                        foreach($month as $row2):
+                                        ?>
+                                            <option value="<?php echo $row2['id_month'];?>"
+                                                <?php if($row['end'] == $row2['name'])echo 'selected';?>>
+                                                    <?php echo $row2['name'];?>
+                                            </option>
+                                        <?php
+                                        endforeach;
+                                        ?>
                                     </select>
                                 </div>
                             </div>
                            <div class="form-group">
                                 <label class="col-sm-3 control-label">Choisir comme année en cours</label>
                                 <div class="col-sm-5">
-                                
+
                                     <select name="active" class="form-control" style="width:100%;">
                                         <option value="1">Oui</option>
                                         <option value="0">Non</option>
