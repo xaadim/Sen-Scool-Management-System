@@ -3,6 +3,7 @@
     $this->db->where('sender', $current_user);
     $this->db->or_where('reciever', $current_user);
     $message_threads = $this->db->get('message_thread')->result_array();
+    $scholar_years		=	$this->db->get_where('scholar_year' , array('active' => 1) )->result_array();
     foreach ($message_threads as $row):
 
     // defining the user to show
@@ -72,8 +73,12 @@
 		</ul>
 		
         <ul class="list-inline links-list pull-right">
-        <!-- Language Selector -->			
-           	<li class="dropdown language-selector">
+       <li > <?php foreach ($scholar_years as $sc):?>
+		  <a href="<?php echo base_url(); ?>index.php?admin/scholar_year" ><b> <?php echo $sc['name']; ?></b>	</a>	  
+		<?php endforeach; ?>
+		</li>
+        <!-- user  -->			
+           	<li class="dropdown user">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
                         	<i class="entypo-user"></i> <?php echo $this->session->userdata('name');?>
                         	<span class="badge badge-danger pull-right">

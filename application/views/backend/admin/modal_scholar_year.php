@@ -30,13 +30,13 @@
                         <label class="col-sm-3 control-label">Début de l'année</label>
                         <div class="col-sm-5">
                             <select name="start" class="form-control">
-                                <option value=""></option>
+                               
                                 <?php 
                                 $month = $this->db->get('month')->result_array();
                                 foreach($month as $row1):
                                 ?>
                                     <option value="<?php echo $row1['id_month'];?>"
-                                        <?php if($row['start'] == $row1['name'])echo 'selected';?>>
+                                        <?php if($row['start'] == $row1['id_month'])echo 'selected';?>>
                                             <?php echo $row1['name'];?>
                                     </option>
                                 <?php
@@ -50,13 +50,13 @@
                         <label class="col-sm-3 control-label">Fin de l'année</label>
                         <div class="col-sm-5">
                             <select name="end" class="form-control">
-                                <option value=""></option>
+                               
                                 <?php 
                                 $month = $this->db->get('month')->result_array();
                                 foreach($month as $row2):
                                 ?>
                                     <option value="<?php echo $row2['id_month'];?>"
-                                        <?php if($row['end'] == $row2['name'])echo 'selected';?>>
+                                        <?php if($row['end'] == $row2['id_month'])echo 'selected';?>>
                                             <?php echo $row2['name'];?>
                                     </option>
                                 <?php
@@ -75,7 +75,7 @@
                                 foreach($end as $row3):
                                 ?>
                                     <option value="<?php echo $row3['id_status'];?>"
-                                        <?php if($row['active'] == $row3['name'])echo 'selected';?>>
+                                        <?php if($row['active'] == $row3['id_status'])echo 'selected';?>>
                                             <?php echo $row3['name'];?>
                                                 </option>
                                 <?php

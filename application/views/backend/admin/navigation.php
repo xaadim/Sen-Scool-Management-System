@@ -41,8 +41,8 @@
         <!-- Gestion de l'année scolaire -->
         <li class="<?php if ($page_name == 'scholar_year') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?admin/scholar_year">
-                <i class="glyphicon glyphicon-education"></i>
-                <span><?php echo get_phrase('scholar_year'); ?></span>
+                <i class="glyphicon glyphicon-th-list"></i>
+                <span><?php echo get_phrase('manage_scholar_year'); ?></span>
             </a>
         </li>
 

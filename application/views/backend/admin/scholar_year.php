@@ -36,7 +36,7 @@ Vous pouvez ajouter, modifier ou supprimer les années
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $count = 1;foreach($scholar_year as $row):?>
+                        <?php $count = 1; foreach($scholar_year as $row):?>
                         <tr>
                             <td><?php echo $count++;?></td>
                             <td><?php echo $row['name'];?></td>
@@ -45,7 +45,7 @@ Vous pouvez ajouter, modifier ou supprimer les années
                             <td>
                                 <?php if ($row['active'] == 1):?>
                                     <span align="center">
-                                      <span class="badge badge-success">Activé</span>  
+                                      <span class="badge badge-success">Année choisie</span>  
                                     </span>
                                 <?php endif;?>
                                 <?php if ($row['active'] == 0):?>
