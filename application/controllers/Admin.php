@@ -3,17 +3,14 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 /*  
- *  @author   : Joyonto Roy
- *  date    : 27 september, 2014
- *  Ekattor School Management System Pro
- *  http://codecanyon.net/user/Creativeitem
- *  support@creativeitem.com
+ *  @author   : Khadim MBACKE
+ *  date    : 20 janvier 2016
+ *  Sen School
  */
 
 class Admin extends CI_Controller
 {
-    
-    
+ 
   function __construct()
   {
     parent::__construct();
@@ -21,8 +18,8 @@ class Admin extends CI_Controller
         $this->load->library('session');
     
        /*cache control*/
-    $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
-    $this->output->set_header('Pragma: no-cache');
+	    $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+	    $this->output->set_header('Pragma: no-cache');
     
     }
     
@@ -44,6 +41,62 @@ class Admin extends CI_Controller
         $page_data['page_title'] = 'Bienvenue '. $this->session->userdata('name');
         $this->load->view('backend/index', $page_data);
     }
+    
+    /****MANAGE SHCOLAR YEAR*****/
+    function scholar_year($param1 = '', $param2 = '')
+    {
+    	if ($this->session->userdata('admin_login') != 1)
+    		redirect(base_url(), 'refresh');
+    		if ($param1 == 'create') {
+    			$data['name']         = $this->input->post('name');
+    			$data['start'] = $this->input->post('start');
+    			$data['end']   = $this->input->post('end');
+                $data['active']   = $this->input->post('active');                
+                
+                if($this->input->post('active') == 1){
+                    // Update active statut before insert
+                    $data1['active']   = 0;
+                    $this->db->update('scholar_year', $data1);
+                }               
+                
+                $this->db->insert('scholar_year', $data);
+    			$this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
+    			redirect(base_url() . 'index.php?admin/scholar_year/', 'refresh');
+    		}
+    		if ($param1 == 'do_update') {
+    			$data['name']         = $this->input->post('name');
+    			$data['start'] = $this->input->post('start');
+    			$data['end']   = $this->input->post('end');
+                $data['active']   = $this->input->post('active');
+
+                if($this->input->post('active') == 1){
+                    // Update active statut before insert
+                    $data1['active']   = 0;
+                    $this->db->update('scholar_year', $data1);
+                } 
+                    
+    			$this->db->where('id_scholar_year', $param2);
+    			$this->db->update('scholar_year', $data);
+    			$this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
+    			redirect(base_url() . 'index.php?admin/scholar_year/', 'refresh');
+    		} else if ($param1 == 'edit') {
+    			$page_data['edit_data'] = $this->db->get_where('scholar_year', array(
+    					'id_scholar_year' => $param2
+    			))->result_array();
+    		}
+    		if ($param1 == 'delete') {
+    			$this->db->where('id_scholar_year', $param2);
+    			$this->db->delete('scholar_year');
+    			$this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
+    			redirect(base_url() . 'index.php?admin/scholar_year/', 'refresh');
+    		}
+
+            $page_data['scholar_year']    = $this->db->get('scholar_year')->result_array();
+            $page_data['page_title']   = get_phrase('manage_scholar_year');
+            $page_data['page_name']  = 'scholar_year';
+            $this->load->view('backend/index', $page_data);
+    }
+    
     
     
     /****MANAGE STUDENTS CLASSWISE*****/
@@ -135,7 +188,7 @@ class Admin extends CI_Controller
       
     $page_data['page_name']  = 'student_marksheet';
     $page_data['page_title']   = get_phrase('student_marksheet'). " de la classe ".
-                      $this->crud_model->get_class_name($class_id);
+    $this->crud_model->get_class_name($class_id);
     $page_data['class_id']   = $class_id;
     $this->load->view('backend/index', $page_data);
   }

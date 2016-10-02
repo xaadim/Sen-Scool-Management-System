@@ -2,14 +2,6 @@
 if (!defined('BASEPATH'))
 	exit('No direct script access allowed');
 
-/*	
- *	@author : Joyonto Roy
- *	date	: 1 August, 2013
- *	University Of Dhaka, Bangladesh
- *	Hospital Management system
- *	http://codecanyon.net/user/joyontaroy
- */
-
 
 class Multilanguage extends CI_Controller
 {
@@ -30,7 +22,7 @@ class Multilanguage extends CI_Controller
 	{
 	}
 	
-	function select_language($language = 'english')
+	function select_language($language = 'french')
 	{
 		$this->session->set_userdata('current_language', $language);
 		redirect(base_url(), 'refresh');

@@ -50,7 +50,7 @@ foreach ( $edit_data as $row):
 						<div class="col-sm-5">
 							<select name="parent_id" class="form-control" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>">
                               <option value=""><?php echo get_phrase('select');?></option>
-                              <?php 
+                              	<?php 
 									$parents = $this->db->get('parent')->result_array();
 									foreach($parents as $row3):
 										?>

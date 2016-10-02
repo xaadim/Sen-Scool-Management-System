@@ -105,10 +105,17 @@ class Crud_model extends CI_Model {
         $query = $this->db->get('class');
         return $query->result_array();
     }
+    
 
     function get_class_info($class_id) {
         $query = $this->db->get_where('class', array('class_id' => $class_id));
         return $query->result_array();
+    }
+    
+    //////////SCHOLAR YEAR/////////////
+    function get_scholar_year() {
+    	$query = $this->db->get('scholar_year');
+    	return $query->result_array();
     }
 
     //////////EXAMS/////////////
