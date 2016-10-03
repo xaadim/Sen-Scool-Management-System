@@ -46,11 +46,49 @@
             </a>
         </li>
 
-        <!-- STUDENT -->
+        <!-- INSCRIPTION -->
         <li class="<?php
         if ($page_name == 'student_add' ||
-                $page_name == 'student_bulk_add' ||
-                $page_name == 'student_information' ||
+            $page_name == 'student_bulk_add' ||
+            $page_name == 'inscription' ||
+                $page_name == 'reinscription')
+            echo 'opened active has-sub';
+        ?> ">
+            <a href="#">
+                <i class="glyphicon glyphicon-edit"></i>
+                <span><?php echo get_phrase('inscription_reinscription'); ?></span>
+            </a>
+            <ul>
+                 <li>
+                    
+                    <!-- inscription -->
+                    <li class="<?php if ($page_name == 'student_add') echo 'active'; ?> ">
+                        <a href="<?php echo base_url(); ?>index.php?admin/student_add">
+                            <span><i class="entypo-dot"></i> Inscription </span>
+                        </a>
+                    </li>
+
+                     <!-- STUDENT BULK ADMISSION -->
+                    <li class="<?php if ($page_name == 'student_bulk_add') echo 'active'; ?> ">
+                        <a href="<?php echo base_url(); ?>index.php?admin/student_bulk_add">
+                            <span><i class="entypo-dot"></i> <?php echo get_phrase('admit_bulk_student'); ?></span>
+                        </a>
+                    </li>
+                   
+                </li>
+               
+                <!-- inscription -->
+                <li class="<?php if ($page_name == 'student_add') echo 'active'; ?> ">
+                    <a href="<?php echo base_url(); ?>index.php?admin/reinscription">
+                        <span><i class="entypo-dot"></i> Réinscription </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- STUDENT -->
+        <li class="<?php
+        if (    $page_name == 'student_information' ||
                 $page_name == 'student_information_all' ||
                 $page_name == 'student_marksheet')
             echo 'opened active has-sub';
@@ -59,14 +97,7 @@
                 <i class="fa fa-group"></i>
                 <span><?php echo get_phrase('student'); ?></span>
             </a>
-            <ul>
-            <!-- STUDENT ADMISSION -->
-                <li class="<?php if ($page_name == 'student_add') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/student_add">
-                        <span><i class="entypo-dot"></i> <?php echo get_phrase('admit_student'); ?></span>
-                    </a>
-                </li>
-                
+            <ul>                
                 <!-- STUDENT INFORMATION -->
                 <li class="<?php if ($page_name == 'student_information ') echo 'opened active'; ?> ">
                     <a href="#">
@@ -93,15 +124,7 @@
                         </li>
                     </ul>
                 </li>
-    
-                <!-- STUDENT BULK ADMISSION -->
-                <li class="<?php if ($page_name == 'student_bulk_add') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/student_bulk_add">
-                        <span><i class="entypo-dot"></i> <?php echo get_phrase('admit_bulk_student'); ?></span>
-                    </a>
-                </li>
-
-                
+              
 
                 <!-- STUDENT MARKSHEET -->
                 <li class="<?php if ($page_name == 'student_marksheet') echo 'opened active'; ?> ">

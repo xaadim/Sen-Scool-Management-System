@@ -74,7 +74,7 @@ class Admin extends CI_Controller
                     $data1['active']   = 0;
                     $this->db->update('scholar_year', $data1);
                 } 
-                    
+
     			$this->db->where('id_scholar_year', $param2);
     			$this->db->update('scholar_year', $data);
     			$this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
@@ -90,6 +90,19 @@ class Admin extends CI_Controller
     			$this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
     			redirect(base_url() . 'index.php?admin/scholar_year/', 'refresh');
     		}
+
+            if ($param1 == 'active') {                
+                $data['name']         = $this->input->post('name');
+                $data['start'] = $this->input->post('start');
+                $data['end']   = $this->input->post('end');
+                $data['active']   = 1;
+                $this->db->update('scholar_year', $data1);               
+
+                $this->db->where('id_scholar_year', $param2);
+
+                $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
+                redirect(base_url() . 'index.php?admin/scholar_year/', 'refresh');
+            }
 
             $page_data['scholar_year']    = $this->db->get('scholar_year')->result_array();
             $page_data['page_title']   = get_phrase('manage_scholar_year');
@@ -181,17 +194,31 @@ class Admin extends CI_Controller
         $this->load->view('backend/index', $page_data);
     }
 
-  function student_marksheet($class_id = '')
-  {
-    if ($this->session->userdata('admin_login') != 1)
+    function reinscription($matricule = '')
+    {
+        if ($this->session->userdata('admin_login') != 1)
             redirect('login', 'refresh');
-      
-    $page_data['page_name']  = 'student_marksheet';
-    $page_data['page_title']   = get_phrase('student_marksheet'). " de la classe ".
-    $this->crud_model->get_class_name($class_id);
-    $page_data['class_id']   = $class_id;
-    $this->load->view('backend/index', $page_data);
-  }
+
+           $page_data['page_name']  = 'reinscription';
+        $page_data['page_title']   = " Réinscription ";
+        $page_data['matricule']   = $this->input->post('matricule');
+        $this->load->view('backend/index', $page_data);
+          
+    }
+
+   
+
+    function student_marksheet($class_id = '')
+    {
+        if ($this->session->userdata('admin_login') != 1)
+                redirect('login', 'refresh');
+          
+        $page_data['page_name']  = 'student_marksheet';
+        $page_data['page_title']   = get_phrase('student_marksheet'). " de la classe ".
+        $this->crud_model->get_class_name($class_id);
+        $page_data['class_id']   = $class_id;
+        $this->load->view('backend/index', $page_data);
+    }
   
     function student($param1 = '', $param2 = '', $param3 = '')
     {

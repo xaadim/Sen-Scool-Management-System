@@ -3,7 +3,7 @@
     $this->db->where('sender', $current_user);
     $this->db->or_where('reciever', $current_user);
     $message_threads = $this->db->get('message_thread')->result_array();
-    $scholar_years		=	$this->db->get_where('scholar_year' , array('active' => 1) )->result_array();
+    $ss		=	$this->db->get_where('scholar_year' , array('active' => 1) )->result_array();
     foreach ($message_threads as $row):
 
     // defining the user to show
@@ -73,8 +73,8 @@
 		</ul>
 		
         <ul class="list-inline links-list pull-right">
-       <li > <?php foreach ($scholar_years as $sc):?>
-		  <a href="<?php echo base_url(); ?>index.php?admin/scholar_year" ><b> <?php echo $sc['name']; ?></b>	</a>	  
+       <li > <?php foreach ($ss as $hh):?>
+		  <a href="<?php echo base_url(); ?>index.php?admin/scholar_year" ><b> <?php echo $hh['name']; ?></b>	</a>	  
 		<?php endforeach; ?>
 		</li>
         <!-- user  -->			

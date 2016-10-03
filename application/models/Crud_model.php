@@ -29,6 +29,13 @@ class Crud_model extends CI_Model {
         return $query->result_array();
     }
 
+    function get_students_by_matricule($matricule) {
+        $query = $this->db->get_where('student', array('matricule' => $matricule));
+        $res = $query->result_array();
+        foreach ($res as $row)
+            return $row['name'];
+    }
+
     /////////TEACHER/////////////
     function get_teachers() {
         $query = $this->db->get('teacher');
@@ -85,6 +92,8 @@ class Crud_model extends CI_Model {
         $query = $this->db->get_where('subject', array('subject_id' => $subject_id))->row();
         return $query->name;
     }
+
+     
 
     ////////////CLASS///////////
     function get_class_name($class_id) {
