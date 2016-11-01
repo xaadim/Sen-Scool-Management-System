@@ -102,15 +102,21 @@ foreach($student_info as $row):?>
                         </td>
                     </tr>
                     <?php endif;?>
-                    <?php if($row['parent_id'] != ''):?>
+                    <!-- <?php if($row['parent_id'] != ''):?> -->
+                    <?php if($row['parent_name'] != ''):?>
                     <tr>
                         <td>Noms des parents</td>
-                        <td><b><?php echo $this->db->get_where('parent' , array('parent_id' => $row['parent_id']))->row()->name;?></b></td>
+                        <td><b><?php echo $row['parent_name'];?></b></td>
+                        <!-- <td><b><?php echo $this->db->get_where('parent' , array('parent_id' => $row['parent_id']))->row()->name;?></b></td> -->
                     </tr>
+                    <?php endif;?>
+                    <?php if($row['parent_phone'] != ''):?>
                     <tr>
                         <td>Téléphone des parents</td>
-                        <td><b><?php echo $this->db->get_where('parent' , array('parent_id' => $row['parent_id']))->row()->phone;?></b></td>
+                        <td><b><?php echo $row['parent_phone'];?></b></td>
+                        <!-- <td><b><?php echo $this->db->get_where('parent' , array('parent_id' => $row['parent_id']))->row()->phone;?></b></td> -->
                     </tr>
+                    <?php endif;?>
                     <tr>
                         <td>Transport de l'élève</td>
                         <td><b><?php echo $this->db->get_where('transport' , array('transport_id' => $row['transport_id']))->row()->route_name;?></b></td>

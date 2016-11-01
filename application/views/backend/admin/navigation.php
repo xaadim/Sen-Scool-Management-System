@@ -156,12 +156,12 @@
         </li>
 
         <!-- PARENTS -->
-        <li class="<?php if ($page_name == 'parent') echo 'active'; ?> ">
+        <!-- <li class="<?php if ($page_name == 'parent') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?admin/parent">
                 <i class="entypo-user"></i>
                 <span><?php echo get_phrase('parents'); ?></span>
             </a>
-        </li>
+        </li> -->
 
         <!-- CLASS -->
         <li class="<?php
