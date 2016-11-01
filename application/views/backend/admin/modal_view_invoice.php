@@ -133,7 +133,7 @@ foreach ($edit_data as $row):
         var mywindow = window.open('', 'facture', 'height=400,width=600');
         mywindow.document.write('<html><head><title>Reçu de paiement - Keur Badiane Mai</title>');
         mywindow.document.write('<link rel="stylesheet" href="assets/css/neon-theme.css" type="text/css" />');
-        // mywindow.document.write('<link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css" />');
+        mywindow.document.write('<link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css" />');
         mywindow.document.write('<link rel="stylesheet" href="assets/js/datatables/responsive/css/datatables.responsive.css" type="text/css" />');
         mywindow.document.write('</head><body >');
         mywindow.document.write(data);
