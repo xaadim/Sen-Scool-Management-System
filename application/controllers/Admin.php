@@ -226,6 +226,7 @@ class Admin extends CI_Controller
             redirect('login', 'refresh');
         if ($param1 == 'create') {
             $data['matricule']       = $this->input->post('matricule');
+            $data['id_scholar_year'] = $this->input->post('id_scholar_year');
             $data['name']       = $this->input->post('name');
             $data['birthday']   = $this->input->post('birthday');
             $data['place_of_birth']   = $this->input->post('place_of_birth');
@@ -249,6 +250,7 @@ class Admin extends CI_Controller
             redirect(base_url() . 'index.php?admin/student_add/' . $data['class_id'], 'refresh');
         }
         if ($param2 == 'do_update') {
+            $data['id_scholar_year'] = $this->input->post('id_scholar_year');
             $data['matricule']        = $this->input->post('matricule');
             $data['name']        = $this->input->post('name');
             $data['birthday']    = $this->input->post('birthday');
@@ -525,6 +527,7 @@ class Admin extends CI_Controller
         if ($this->session->userdata('admin_login') != 1)
             redirect(base_url(), 'refresh');
         if ($param1 == 'create') {
+            $data['id_scholar_year'] = $this->input->post('id_scholar_year');
             $data['name']    = $this->input->post('name');
             $data['date']    = $this->input->post('date');
             $data['comment'] = $this->input->post('comment');
@@ -533,6 +536,7 @@ class Admin extends CI_Controller
             redirect(base_url() . 'index.php?admin/exam/', 'refresh');
         }
         if ($param1 == 'edit' && $param2 == 'do_update') {
+            $data['id_scholar_year'] = $this->input->post('id_scholar_year');
             $data['name']    = $this->input->post('name');
             $data['date']    = $this->input->post('date');
             $data['comment'] = $this->input->post('comment');
@@ -611,6 +615,7 @@ class Admin extends CI_Controller
             redirect(base_url(), 'refresh');
         
         if ($this->input->post('operation') == 'selection') {
+            $data['id_scholar_year'] = $this->input->post('id_scholar_year');
             $page_data['exam_id']    = $this->input->post('exam_id');
             $page_data['class_id']   = $this->input->post('class_id');
             $page_data['subject_id'] = $this->input->post('subject_id');
@@ -623,6 +628,7 @@ class Admin extends CI_Controller
             }
         }
         if ($this->input->post('operation') == 'update') {
+            $data['id_scholar_year'] = $this->input->post('id_scholar_year');
             $data['mark_obtained'] = $this->input->post('mark_obtained');
             $data['comment']       = $this->input->post('comment');
             
@@ -694,6 +700,7 @@ class Admin extends CI_Controller
         if ($this->session->userdata('admin_login') != 1)
             redirect(base_url(), 'refresh');
         if ($param1 == 'create') {
+            $data['id_scholar_year'] = $this->input->post('id_scholar_year');
             $data['class_id']   = $this->input->post('class_id');
             $data['subject_id'] = $this->input->post('subject_id');
             $data['time_start'] = $this->input->post('time_start');
@@ -704,6 +711,7 @@ class Admin extends CI_Controller
             redirect(base_url() . 'index.php?admin/class_routine/', 'refresh');
         }
         if ($param1 == 'do_update') {
+            $data['id_scholar_year'] = $this->input->post('id_scholar_year');
             $data['class_id']   = $this->input->post('class_id');
             $data['subject_id'] = $this->input->post('subject_id');
             $data['time_start'] = $this->input->post('time_start');
@@ -745,6 +753,7 @@ class Admin extends CI_Controller
 
                 $this->db->where('student_id' , $row['student_id']);
                 $this->db->where('date' , $this->input->post('date'));
+                $this->db->where('id_scholar_year' , $this->input->post('id_scholar_year'));
 
                 $this->db->update('attendance' , array('status' => $attendance_status));
             }
@@ -815,6 +824,7 @@ class Admin extends CI_Controller
             redirect(base_url(), 'refresh');
         
         if ($param1 == 'create') {
+            $data['id_scholar_year'] = $this->input->post('id_scholar_year');
             $data['student_id']         = $this->input->post('student_id');
             $data['title']              = $this->input->post('title');
             $data['month']              = $this->input->post('month');
@@ -845,6 +855,7 @@ class Admin extends CI_Controller
             redirect(base_url() . 'index.php?admin/invoice', 'refresh');
         }
         if ($param1 == 'do_update') {
+            $data['id_scholar_year'] = $this->input->post('id_scholar_year');
             $data['student_id']         = $this->input->post('student_id');
             $data['title']              = $this->input->post('title');
             $data['month']              = $this->input->post('month');
@@ -918,6 +929,7 @@ class Admin extends CI_Controller
         if ($this->session->userdata('admin_login') != 1)
             redirect('login', 'refresh');
         if ($param1 == 'create') {
+            $data['id_scholar_year'] = $this->input->post('id_scholar_year');
             $data['title']               =   $this->input->post('title');
             $data['expense_category_id'] =   $this->input->post('expense_category_id');
             $data['description']         =   $this->input->post('description');
@@ -931,6 +943,7 @@ class Admin extends CI_Controller
         }
 
         if ($param1 == 'edit') {
+            $data['id_scholar_year'] = $this->input->post('id_scholar_year');
             $data['title']               =   $this->input->post('title');
             $data['expense_category_id'] =   $this->input->post('expense_category_id');
             $data['description']         =   $this->input->post('description');
@@ -971,6 +984,7 @@ class Admin extends CI_Controller
         if ($this->session->userdata('admin_login') != 1)
             redirect('login', 'refresh');
         if ($param1 == 'create') {
+            $data['id_scholar_year'] = $this->input->post('id_scholar_year');
             $data['description']        =   $this->input->post('description');
             $data['in']                 =   $this->input->post('in');
             $data['out']                =   $this->input->post('out');
@@ -982,6 +996,7 @@ class Admin extends CI_Controller
         }
 
         if ($param1 == 'edit') {
+            $data['id_scholar_year'] = $this->input->post('id_scholar_year');
             $data['description']               =   $this->input->post('description');
             $data['in'] =   $this->input->post('in');
             $data['out']         =   $this->input->post('out');

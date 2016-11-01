@@ -9,6 +9,11 @@ $edit_data		=	$this->db->get_where('invoice' , array('invoice_id' => $param2) )-
                 <div class="form-group">
                     <label class="col-sm-3 control-label"><?php echo get_phrase('student');?></label>
                     <div class="col-sm-5">
+                        <?php 
+                            $scholar_year = $this->db->get_where('scholar_year' , array('active' => 1) )->result_array();
+                            foreach ($scholar_year as $sy):?>
+                            <input type="hidden" class="form-control" name="id_scholar_year" value="<?php echo $sy['id_scholar_year']; ?>">
+                        <?php endforeach; ?>
                         <select name="student_id" class="form-control" style="width:400px;" >
                             <?php 
                             $this->db->order_by('name','asc');

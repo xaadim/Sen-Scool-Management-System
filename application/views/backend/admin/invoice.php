@@ -127,6 +127,11 @@ reçu de non paiement qui sera envoyé électroniquement à l'élève et à ses 
                             <div class="panel-body">
 
                                 <div class="form-group">
+                                <?php 
+                                    $scholar_year = $this->db->get_where('scholar_year' , array('active' => 1) )->result_array();
+                                    foreach ($scholar_year as $sy):?>
+                                    <input type="hidden" class="form-control" name="id_scholar_year" value="<?php echo $sy['id_scholar_year']; ?>">
+                                <?php endforeach; ?>
                                     <label class="col-sm-3 control-label"><?php echo get_phrase('title');?></label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" name="title" value="Reçu de paiement"/>

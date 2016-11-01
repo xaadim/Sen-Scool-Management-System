@@ -19,6 +19,11 @@
                 <?php echo form_open(base_url() . 'index.php?admin/expense/edit/' . $row['payment_id'] , array('class' => 'form-horizontal form-groups-bordered validate', 'enctype' => 'multipart/form-data'));?>
 	
 					<div class="form-group">
+                        <?php 
+                            $scholar_year = $this->db->get_where('scholar_year' , array('active' => 1) )->result_array();
+                            foreach ($scholar_year as $sy):?>
+                            <input type="hidden" class="form-control" name="id_scholar_year" value="<?php echo $sy['id_scholar_year']; ?>">
+                        <?php endforeach; ?>
 						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('title');?></label>
                         
 						<div class="col-sm-6">

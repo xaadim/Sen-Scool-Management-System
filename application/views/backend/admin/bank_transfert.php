@@ -132,6 +132,11 @@ Cette page vous permet de gérer les versements bancaires à savoir les entrée 
                             <div class="panel-body">
 
                             	<div class="form-group">
+                                <?php 
+                                    $scholar_year = $this->db->get_where('scholar_year' , array('active' => 1) )->result_array();
+                                    foreach ($scholar_year as $sy):?>
+                                    <input type="hidden" class="form-control" name="id_scholar_year" value="<?php echo $sy['id_scholar_year']; ?>">
+                                <?php endforeach; ?>
 					                <label class="col-sm-3 control-label">Votre fond actuel</label>
 					                <div class="col-sm-6">
 					                    <input type="text" class="form-control" value="<?php 

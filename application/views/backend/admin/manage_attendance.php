@@ -232,6 +232,11 @@ Par défaut la date d'ajourd'hui est sélectionnée.
                                         <option value="1" <?php if($status == 1)echo 'selected="selected"';?>>Present</option>
                                         <option value="2" <?php if($status == 2)echo 'selected="selected"';?>>Absent</option>
                                     </select>
+                                    <?php 
+                                        $scholar_year = $this->db->get_where('scholar_year' , array('active' => 1) )->result_array();
+                                        foreach ($scholar_year as $sy):?>
+                                        <input type="hidden" class="form-control" name="id_scholar_year" value="<?php echo $sy['id_scholar_year']; ?>">
+                                    <?php endforeach; ?>
                                 
                             </td>
                         </tr>

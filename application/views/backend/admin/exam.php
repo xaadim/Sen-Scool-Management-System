@@ -82,6 +82,11 @@ et des appréciations. Les parents aussi pourront directement voir les notes de 
                                 <div class="col-sm-5">
                                     <input type="text" class="form-control" name="name" data-validate="required" data-message-required="<?php echo get_phrase('value_required');?>"/>
                                 </div>
+                                <?php 
+                                    $scholar_year = $this->db->get_where('scholar_year' , array('active' => 1) )->result_array();
+                                    foreach ($scholar_year as $sy):?>
+                                    <input type="hidden" class="form-control" name="id_scholar_year" value="<?php echo $sy['id_scholar_year']; ?>">
+                                <?php endforeach; ?>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo get_phrase('date');?></label> 

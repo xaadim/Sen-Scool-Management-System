@@ -161,6 +161,11 @@ N'oubliez pas d'enregistrer chaque ligne. </br>
                                 </td>
                                 <td>
                                     <textarea name="comment" class="form-control"><?php echo $row2['comment'];?></textarea>
+                                    <?php 
+                                        $scholar_year = $this->db->get_where('scholar_year' , array('active' => 1) )->result_array();
+                                        foreach ($scholar_year as $sy):?>
+                                        <input type="hidden" class="form-control" name="id_scholar_year" value="<?php echo $sy['id_scholar_year']; ?>">
+                                    <?php endforeach; ?>
                                 </td>
                                 <td>
                                     <input type="hidden" name="mark_id" value="<?php echo $row2['mark_id'];?>" />
